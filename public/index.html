@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+</head>
+
+<body>
+
+
+  <script src="stomp.min.js"></script>
+
+
+  <script>
+  var url = "ws://DESARROLLO14:61614/stomp";
+  var client = Stomp.client(url);
+  var passcode = "";
+  var login = "";
+  var TOPICO = "/cemex/prospecto";
+  var subscription;
+
+ var callbackSuscribe = function(message) {
+    // called when the client receives a STOMP message from the server
+    
+    if (message.body) {
+      console.info("Mensaje recibido: " + message.body)
+    } else {
+      console.info("Mensaje vacío");
+    }
+
+  };
+
+  var connectCallback = function() {
+
+    console.info("conectado");
+    subscription = client.subscribe(TOPICO, callbackSuscribe);
+
+  };
+
+
+    var errorCallback = function() {
+    
+    console.info("error");
+  };
+  client.connect(login, passcode, connectCallback, errorCallback);
+
+   setTimeout(function(){
+     client.send(TOPICO, {priority: 9}, "Hello, STOMP");
+   },5000);
+
+
+   setTimeout(function(){
+     client.send(TOPICO, {priority: 9}, "SEÑOR QA");
+   },15000);
+        </script>
+</body>
+
+</html>
