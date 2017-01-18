@@ -12,15 +12,19 @@
 
 
   <script>
-      var client = mqtt.connect("mqtt://DESARROLLO14:1883") // you add a ws:// url here
-      client.subscribe("mqtt/demo")
+      var client = mqtt.connect("mqtt://activemq3870.cloudapp.net:61614") // you add a ws:// url here
+    // var client  = mqtt.connect('mqtt://test.mosquitto.org')
  
-      client.on("message", function (topic, payload) {
-        alert([topic, payload].join(": "))
-        client.end()
-      })
+client.on('connect', function () {
+  client.subscribe('presence')
+  client.publish('presence', 'Hello mqtt')
+})
  
-      client.publish("mqtt/demo", "hello world!")
+client.on('message', function (topic, message) {
+  // message is Buffer 
+  console.log(message.toString())
+ // client.end()
+});
     </script> 
 </body>
 </body>
