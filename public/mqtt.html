@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+</head>
+
+<body>
+
+
+  <script src="browserMqtt.js"></script>
+
+
+  <script>
+      var client = mqtt.connect("mqtt://DESARROLLO14:1883") // you add a ws:// url here
+      client.subscribe("mqtt/demo")
+ 
+      client.on("message", function (topic, payload) {
+        alert([topic, payload].join(": "))
+        client.end()
+      })
+ 
+      client.publish("mqtt/demo", "hello world!")
+    </script> 
+</body>
+</body>
+
+</html>

@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "webpack-mqtt": "webpack node_modules/mqtt/mqtt.js ./public/browserMqtt.js --output-library mqtt"
   },
   "repository": {
     "type": "git"
@@ -15,6 +16,8 @@
   "devDependencies": {},
   "dependencies": {
     "express": "4.14.0",
-    "stompjs": "^2.3.3"
+    "mqtt": "^2.2.1",
+    "stompjs": "^2.3.3",
+    "webpack": "^1.14.0"
   }
 }
