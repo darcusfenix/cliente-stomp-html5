@@ -5,7 +5,9 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "webpack-mqtt": "webpack node_modules/mqtt/mqtt.js ./public/browserMqtt.js --output-library mqtt"
+    "webpack-mqtt": "webpack node_modules/mqtt/mqtt.js ./public/browserMqtt.js --output-library mqtt",
+    "suscribirse": "node_modules/.bin/mqtt  sub -t 'mqtt/demo' -h 'activemq3870.cloudapp.net' -v",
+    "publicar": "node_modules/.bin/mqtt  pub -t 'mqtt/demo' -h 'activemq3870.cloudapp.net' -m 'hsssssssss'"
   },
   "repository": {
     "type": "git"
