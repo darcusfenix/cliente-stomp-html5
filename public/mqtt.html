@@ -11,18 +11,19 @@
   <script src="mqttws31.min.js" type="text/javascript"></script>
 
   <script>
-    var uri = "activemq3870.cloudapp.net";
+    var uri = "activemq.crisostomo.soy";
     var topico = "cemex/prospectos";
     // Create a client instance
 
-    client = new Paho.MQTT.Client(uri, 61614, "/mqtt" + parseInt(Math.random() * 100, 10));
+    client = new Paho.MQTT.Client(uri, 443, "/" + parseInt(Math.random() * 100, 10));
 
     // set callback handlers
     client.onConnectionLost = onConnectionLost;
     client.onMessageArrived = onMessageArrived;
     var options = {
       onSuccess: onConnect,
-      onFailure: doFail
+      onFailure: doFail,
+      useSSL: true
     }
 
     // connect the client
